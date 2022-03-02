@@ -1,0 +1,29 @@
+﻿@page
+@{
+}
+
+<h1 class="text-black-50">Записная книжка</h1>
+<div class="row">
+        @foreach (var item in ViewBag.Record)
+        {
+            <div class="col-sm-3">
+                <div class="card-deck">
+                    <div class="card m-3">
+                        <div class="text-center">
+                            <h3>@item.LastName</h3>
+                        </div>
+                        <div>
+                            <img class="card-img-top" photo src="~/photo/avatar-159236_960_720.png" />
+                        </div>
+                        <h4>
+                            <a href="/Records/RecordPage" class="btn btn-info">ID: @item.ID</a>
+                        </h4>
+                        <h4>@item.FirstName</h4>
+                        <h4>@item.MiddleName</h4><br />
+                        <p><a class="btn btn-warning" asp-controller="Records" asp-action="DeleteData" asp-route-ID="@item.ID">Удалить запись</a></p>
+                    </div>
+                </div>
+            </div>
+        }
+</div>
+<a href="/Records/Add" class="btn alert-dark">Добавить запись</a>
